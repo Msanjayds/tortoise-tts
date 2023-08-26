@@ -345,7 +345,7 @@ class TextToSpeech:
         """
         text_tokens = torch.IntTensor(self.tokenizer.encode(text)).unsqueeze(0).cuda()
         text_tokens = F.pad(text_tokens, (0, 1))  # This may not be necessary.
-        assert text_tokens.shape[-1] < 400, 'Too much text provided. Break the text up into separate segments and re-try inference.'
+        assert text_tokens.shape[-1] < 5000, 'Too much text provided. Break the text up into separate segments and re-try inference.'
 
         auto_conds = None
         if voice_samples is not None:
